@@ -4,7 +4,9 @@ img = cv2.imread("triangle.png")
 
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 _, thresh = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
-M = cv2.moments(thresh)
+
+contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+M = cv2.moments(contours[1])
 
 X = int(M["m10"] / M["m00"])
 Y = int(M["m01"] / M["m00"])
