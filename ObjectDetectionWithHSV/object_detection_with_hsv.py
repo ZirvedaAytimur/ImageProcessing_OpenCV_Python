@@ -19,7 +19,10 @@ cv2.createTrackbar("UV", "Trackbar", 0, 255, nothing)
 
 while 1:
     ret, frame = cap.read()
-    frame = cv2.flip(frame, 1)
+
+    if ret is False:
+        continue
+
     frame = cv2.resize(frame, (500, 350))
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
