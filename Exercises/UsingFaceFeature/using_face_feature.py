@@ -10,6 +10,7 @@ def findMaxContour(contours):
         area_face = cv2.contourArea(contours[i])
 
         if max_area < area_face:
+            max_area = area_face
             max_i = i
         try:
             c = contours[max_i]
